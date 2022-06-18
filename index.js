@@ -8,6 +8,14 @@ const servers = {
   "Vanilla Kits": "54.39.130.212:28015"
 }
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", req.headers['origin'] ?? "*");
+  res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PATCH, PUT");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  next();
+})
+
 app.get('/', async function (req, res) {
   const output = {};
   for(const server in servers) {

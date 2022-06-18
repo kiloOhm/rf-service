@@ -1,6 +1,6 @@
 import axios from 'axios';
 import express from 'express';
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3001;
 var app = express();
 
 const servers = {

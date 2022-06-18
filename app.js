@@ -28,7 +28,6 @@ app.get('/', async function (req, res) {
       console.log(e);
       continue;
     }
-    console.log(result.data);
     output[server] = {
       players: result.data.players,
       maxplayers: result.data.maxplayers,

@@ -6,7 +6,7 @@ var app = express();
 const servers = {
   Roleplay: "54.39.130.212:28015",
   Vanilla: "54.39.130.212:28115",
-  "Vanilla Kits": "54.39.130.212:28215"
+  "Vanilla+": "54.39.130.212:28215"
 }
 
 app.use((req, res, next) => {

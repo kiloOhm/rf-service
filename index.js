@@ -1,5 +1,6 @@
 import axios from 'axios';
 import express from 'express';
+const port = process.env.PORT || 80;
 var app = express();
 
 const servers = {
@@ -41,4 +42,4 @@ app.get('/healthz', function (req, res) {
   res.send('OK');
 })
 
-app.listen(80);
+app.listen(port, () => console.log(`listening on port ${port}!`));

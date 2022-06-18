@@ -29,4 +29,8 @@ app.get('/', async function (req, res) {
   res.send(output);
 })
 
+app.get('/healthz', function (req, res) {
+  res.send('OK');
+})
+
 app.listen(80);

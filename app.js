@@ -9,6 +9,10 @@ const servers = {
   "Vanilla+": "54.39.130.212:28215"
 }
 
+app.get('/healthz', function (req, res) {
+  res.send("I'm alive!");
+})
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", req.headers['origin'] ?? "*");
   res.header("Access-Control-Allow-Methods", "GET");
@@ -35,10 +39,6 @@ app.get('/', async function (req, res) {
     };
   }
   res.send(output);
-})
-
-app.get('/healthz', function (req, res) {
-  res.send('OK');
 })
 
 app.listen(port, () => console.log(`listening on port ${port}!`));

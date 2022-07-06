@@ -41,4 +41,13 @@ app.post('/', async function (req, res) {
   res.send(output);
 })
 
+app.use((err, req, res, next) => {
+  if (res.headersSent) {
+    return next(err)
+  }
+  res.status(500)
+  res.render('error', { error: err })
+}
+)
+
 app.listen(port, () => console.log(`listening on port ${port}!`));

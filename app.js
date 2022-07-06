@@ -1,13 +1,9 @@
 import axios from 'axios';
 import express from 'express';
+import bodyParser from 'body-parser';
 const port = 10000;
 var app = express();
-
-const servers = {
-  Roleplay: "15.204.160.231:28015",
-  Vanilla: "15.204.160.231:28115",
-  "Vanilla+": "15.204.160.231:28215"
-}
+app.use(bodyParser().json());
 
 app.get('/healthz', function (req, res) {
   res.send("I'm alive!");
@@ -21,7 +17,11 @@ app.use((req, res, next) => {
   next();
 })
 
-app.get('/', async function (req, res) {
+app.post('/', async function (req, res) {
+  const servers = req.body.servers;
+  if(!servers || Object.keys(servers).length === 0) {
+    res.status(400).send("No servers provided");
+  }
   const output = {};
   for(const server in servers) {
     const url = servers[server];

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import express from 'express';
-import bodyParser from 'body-parser';
+
 const port = 10000;
 var app = express();
-app.use(bodyParser().json());
+app.use(express.json());
 
 app.get('/healthz', function (req, res) {
   res.send("I'm alive!");
@@ -11,14 +11,14 @@ app.get('/healthz', function (req, res) {
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", req.headers['origin'] ?? "*");
-  res.header("Access-Control-Allow-Methods", "GET");
+  res.header("Access-Control-Allow-Methods", "GET, POST");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   next();
 })
 
 app.post('/', async function (req, res) {
-  const servers = req.body.servers;
+  const servers = req.body?.servers;
   if(!servers || Object.keys(servers).length === 0) {
     res.status(400).send("No servers provided");
   }

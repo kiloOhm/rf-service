@@ -4,9 +4,9 @@ const port = 10000;
 var app = express();
 
 const servers = {
-  Roleplay: "54.39.130.212:28015",
-  Vanilla: "54.39.130.212:28115",
-  "Vanilla+": "54.39.130.212:28215"
+  Roleplay: "15.204.160.231:28015",
+  Vanilla: "15.204.160.231:28115",
+  "Vanilla+": "15.204.160.231:28215"
 }
 
 app.get('/healthz', function (req, res) {
